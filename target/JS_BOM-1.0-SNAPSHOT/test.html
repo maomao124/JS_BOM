@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<!--
+Project name(项目名称)：JS_BOM
+  File name(文件名): test
+  Authors(作者）: mao
+  Author QQ：1296193245
+  GitHub：https://github.com/maomao124/
+  Date(创建日期)： 2022/3/18
+  Time(创建时间)： 20:15
+  Description(描述)： 无
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="test1.js"></script>
+    <script src="test2.js"></script>
+</head>
+<body>
+<p id="show_tag">此处显示点击按钮的效果</p>
+<button onclick="myBtoa()">btoa()</button>
+<button onclick="myAtob()">atob()</button>
+<button onclick="myAlert()">alert()</button>
+<button onclick="myConfirm()">confirm()</button>
+<button onclick="myOpen()">open()</button>
+<button onclick="myMoveBy()">moveBy()</button>
+<button onclick="myMoveTo()">moveTo()</button>
+<button onclick="myPrint()">print()</button>
+<button onclick="myPrompt()">prompt()</button>
+<button onclick="myResizeBy()">resizeBy()</button>
+<button onclick="myClose()">close()</button>
+
+<button style="color: red;background-color: yellow;" onclick="Close()">关闭主窗口</button>
+
+
+<script>
+    var ptag = document.getElementById('show_tag');
+    var str;
+
+    function myBtoa()
+    {
+        str = btoa("JavaScript");
+        ptag.innerHTML = str;
+    }
+
+    function myAtob()
+    {
+        ptag.innerHTML = typeof str;
+        if (str == undefined)
+        {
+            ptag.innerHTML = "请先点击 btoa() 按钮";
+            return;
+        }
+        ptag.innerHTML = atob(str);
+    }
+
+    function myAlert()
+    {
+        alert("这是一个提示框！");
+    }
+
+    function myConfirm()
+    {
+        var x;
+        var r = confirm("按下按钮!");
+        if (r == true)
+        {
+            x = "你按下了\"确定\"按钮!";
+        }
+        else
+        {
+            x = "你按下了\"取消\"按钮!";
+        }
+        ptag.innerHTML = x;
+    }
+
+    var myWin;
+
+    function myOpen()
+    {
+        if (myWin == undefined || (myWin != undefined && myWin.closed == true))
+        {
+            myWin = window.open('', '', 'width=200,height=100');
+        }
+    }
+
+    function myMoveBy()
+    {
+        if (myWin == undefined || myWin.closed == true)
+        {
+            myOpen();
+        }
+        myWin.moveBy(200, 200);
+    }
+
+    function myMoveTo()
+    {
+        if (myWin == undefined || myWin.closed == true)
+        {
+            myOpen();
+        }
+        myWin.moveTo(0, 0);
+    }
+
+    function myPrint()
+    {
+        print();
+    }
+
+    function myPrompt()
+    {
+        var name = prompt("请输入你的名字。")
+        if (name != null && name != "")
+        {
+            ptag.innerHTML = name;
+        }
+        else
+        {
+            ptag.innerHTML = "你没有输入任何内容";
+        }
+    }
+
+    function myResizeBy()
+    {
+        if (myWin == undefined || myWin.closed == true)
+        {
+            myOpen();
+        }
+        myWin.resizeBy(100, 100);
+    }
+
+    function myClose()
+    {
+        myWin.close();
+    }
+
+    function close()
+    {
+        window.close();
+    }
+</script>
+</body>
+</html>
